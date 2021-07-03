@@ -1,0 +1,55 @@
+                       
+body{
+      background:#EEEEEE;    
+  }
+
+  
+.form-group label{
+      display:none;
+      font-size:18px;
+      line-height:24px;
+      font-weight:100;
+      text-transform:uppercase;
+  }
+  
+.form-control {
+      display:inline;
+      background:#fff;
+      border:none;
+      border-radius:5px;
+      outline:none;
+      box-shadow:0 2px 0 rgba(0,0,0,0.05);
+      height:52px;
+      font-size:18px;
+      line-height:32px;
+      color:#aaa;
+      font-weight:400;
+      padding-left:64px;
+      vertical-align:top;
+  }
+  
+.form-group{
+      position:relative;
+  }
+  
+.form-group [class*=fa] {
+      display:block;
+      width:64px;
+      position:absolute;
+      top:0;
+      left:5px;
+      color:#eee;
+      font-size:24px;
+      line-height:52px;
+      text-align:center;
+      font-weight:300;
+        -webkit-transition:color .3s ease-out;
+        transition:color .3s ease-out;
+  }
+  
+.form-group [class*=fa].active{
+      color:#ccc;
+  }
+
+
+                      
