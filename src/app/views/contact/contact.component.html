@@ -1,41 +1,89 @@
 <div class="container">
-  <div class="row justify-content-center">
-		<form class="col-sm-6 col-sm-offset-3">
-					<div class="form-group">
-					  <label class="control-label" for="contact-name">Namn</label>
-					  <div class="mt-2">
-						  <input id="contact-name" name="contactName" placeholder="Namn" class="form-control" type="text">
-						  <i class="fa fa-user"></i>
-					  </div>
-					</div>
+	<div class="row justify-content-center">
+		<form #regForm="ngForm" (ngSubmit)="onSubmit(regForm)" class="col-sm-6 col-sm-offset-3">
+			<div class="form-group">
+				<label class="control-label" for="name">Namn</label>
+				<div class="mt-2">
+					<input
+					id="name"
+					name="name"
+					class="form-control"
+					type="text"
+					[(ngModel)]="user.name"
+					#name="ngModel"
+					required
+					placeholder="Namn">
+					<i class="fa fa-user"></i>
+				</div>
+			</div>
 
-					<div class="form-group">
-					  <label class="control-label" for="contact-mail">Email</label>
-					  <div class="mt-2">
-						  <input id="contact-mail" name="email" placeholder="Email" class="form-control" type="email">
-						  <i class="fa fa-envelope"></i>
-					  </div>
-					</div>
+			<div class="text-danger" *ngIf="name.invalid && (name.touched || name.dirty)">
+				<small>Du behöver fylla i ditt namn</small>
+			</div>
 
-          <div class="form-group">
-					  <label class="control-label" for="contact-name">Ämne</label>
-					  <div class="mt-2">
-						  <input id="contact-name" name="contactName" placeholder="Ämne" class="form-control"type="text">
-              <i class="fa fa-comment"></i>
-            </div>
-					</div>
+			<div class="form-group">
+				<label class="control-label" for="email">Email</label>
+				<div class="mt-2">
+					<input
+					id="email"
+					name="email"
+					class="form-control"
+					type="email"
+					[(ngModel)]="user.email"
+					#email="ngModel"
+					required
+					pattern="\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}"
+					placeholder="Email">
+					<i class="fa fa-envelope"></i>
+				</div>
+			</div>
 
-					<div class="form-group">
-					  <label class="control-label" for="contact-message">Meddelande</label>
-						<div class="mt-2">
-							<textarea id="contact-message" name="comments" placeholder="Meddelande" class="form-control"></textarea>
-							<i class="fa fa-comment"></i>
-						</div>
-					</div>
+			<div class="text-danger" *ngIf="!email.valid && email.touched && email.errors">
+				<small *ngIf="email.errors.required">Du måste fylla i en email</small>
+				<small *ngIf="email.errors.pattern">Du behöver fylla i en godkänd email</small>
+			</div>
 
-					<button name="submit" type="submit" class="btn btn-info btn-block">
-            <i class="fa fa-location-arrow"></i>Skicka</button>
-					<input type="hidden" name="submitted" id="submitted" value="true">	
+			<div class="form-group">
+				<label class="control-label" for="subject">Ämne</label>
+				<div class="mt-2">
+					<input
+					id="subject"
+					name="subject"
+					class="form-control"
+					type="text"
+					[(ngModel)]="user.subject"
+					#subject="ngModel"
+					required
+					placeholder="Ämne">
+					<i class="fa fa-comment"></i>
+				</div>
+			</div>
+
+			<div class="text-danger" *ngIf="subject.invalid && (subject.touched || subject.dirty)">
+				<small>Du behöver fylla i ett ämne</small>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label" for="message">Meddelande</label>
+				<div class="mt-2">
+					<textarea
+					id="message"
+					name="message"
+					class="form-control"
+					rows="7"
+					[(ngModel)]="user.message"
+					#message="ngModel"
+					required
+					placeholder="Meddelande">
+					</textarea>
+					<i class="fa fa-comment"></i>
+				</div>
+			</div>
+
+			<button name="submit" type="submit" class="btn btn-info btn-block"[disabled]="regForm.form.invalid">
+			<i class="fa fa-location-arrow"></i>Skicka</button>
+			<input type="hidden" name="submitted" id="submitted" value="true">	
+
 		</form>
 	</div>	
 </div>   

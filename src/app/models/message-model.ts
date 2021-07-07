@@ -1,9 +1,9 @@
-export class MassageModel {
+export class MessageModel {
       constructor(
             public name?: string,
             public email?: string,
             public subject?: string,
-            public massage?: string
+            public message?: string
           ) {}
 }
 
