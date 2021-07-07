@@ -1,7 +1,7 @@
 <div class="container">
-	<div class="row justify-content-center">
+	<div class="row justify-content-center mt-5">
 		<form #regForm="ngForm" (ngSubmit)="onSubmit(regForm)" class="col-sm-6 col-sm-offset-3">
-			<div class="form-group">
+			<div class="form-group mb-2">
 				<label class="control-label" for="name">Namn</label>
 				<div class="mt-2">
 					<input
@@ -21,7 +21,7 @@
 				<small>Du behöver fylla i ditt namn</small>
 			</div>
 
-			<div class="form-group">
+			<div class="form-group mb-2">
 				<label class="control-label" for="email">Email</label>
 				<div class="mt-2">
 					<input
@@ -43,7 +43,7 @@
 				<small *ngIf="email.errors.pattern">Du behöver fylla i en godkänd email</small>
 			</div>
 
-			<div class="form-group">
+			<div class="form-group mb-2">
 				<label class="control-label" for="subject">Ämne</label>
 				<div class="mt-2">
 					<input
@@ -63,14 +63,13 @@
 				<small>Du behöver fylla i ett ämne</small>
 			</div>
 
-			<div class="form-group">
+			<div class="form-group mb-2">
 				<label class="control-label" for="message">Meddelande</label>
 				<div class="mt-2">
 					<textarea
 					id="message"
 					name="message"
-					class="form-control"
-					rows="7"
+					class="form-control message-box"
 					[(ngModel)]="user.message"
 					#message="ngModel"
 					required
@@ -80,7 +79,7 @@
 				</div>
 			</div>
 
-			<button name="submit" type="submit" class="btn btn-info btn-block"[disabled]="regForm.form.invalid">
+			<button name="submit" type="submit" class="btn btn-info btn-block btn-send"[disabled]="regForm.form.invalid">
 			<i class="fa fa-location-arrow"></i>Skicka</button>
 			<input type="hidden" name="submitted" id="submitted" value="true">	
 
